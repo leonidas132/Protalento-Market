@@ -2,6 +2,7 @@ package com.protalento.market.persistences.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categorias")
@@ -15,6 +16,10 @@ public class Categoria {
     private String descripcion;
 
     private Boolean estado;
+
+    // de esta manera relacionamos nuestra tabla categoria con producto
+    @OneToMany(mappedBy = "categoria") //especifica una relación uno-a-muchos.
+    private List<Producto> producto;
 
     public Integer getIdCategoria() {
         return idCategoria;

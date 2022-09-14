@@ -5,6 +5,7 @@ package com.protalento.market.persistences.entity;
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity // referencia a una tabal en la base de datos
 @Table(name = "compras") // referencia el nombre de la tabla
@@ -26,6 +27,15 @@ public class Compra {
     private String comentario;
 
     private String estado;
+
+
+    //nos permite recuperar todoa la informacion del cliente que esta realizando una compra
+    @ManyToOne
+    @JoinColumn(name = "id_cliente",insertable = false,updatable = false)
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "compra")
+    private List<ComprasProductos> listar;
 
 
     public Integer getIdCompra() {

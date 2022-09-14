@@ -1,6 +1,9 @@
 package com.protalento.market.persistences.entity;
 
+import org.springframework.context.annotation.EnableMBeanExport;
+
 import javax.persistence.*;
+import java.util.List;
 
 /* @Entity le dara a entender a java que esta
 clase se comporta como una clase que mapea una entidad enc una base de datos */
@@ -35,6 +38,14 @@ public class Producto {
     private Integer cantidadStock;
 
     private Boolean estado;
+
+    //este atributo nos ayuda a relacionar nuestra tabla categoria con productos
+    @ManyToOne  //especifica una relación muchos-a-uno
+    @JoinColumn(name = "id_categoria",insertable = false,updatable = false) //atrabes de esta anotacion espesificamos que atravez de esta relacion no vamos insertar ni a actualizar
+    private Categoria categoria;
+
+    @OneToMany(mappedBy = "producto")
+    private List<ComprasProductos> listar;
 
     public Integer getIdProdcuto() {
         return idProdcuto;

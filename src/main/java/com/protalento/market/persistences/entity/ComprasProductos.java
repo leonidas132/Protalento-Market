@@ -1,10 +1,7 @@
 package com.protalento.market.persistences.entity;
 
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
@@ -16,6 +13,14 @@ public class ComprasProductos {
     private Integer cantidad;
     private Double total;
     private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_compra",insertable = false,updatable = false)
+    private Compra compra;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producto",insertable = false,updatable = false)
+    private Producto producto;
 
     public ComprasProductoPk getId() {
         return id;
