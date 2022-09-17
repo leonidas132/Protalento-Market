@@ -5,6 +5,7 @@ import com.protalento.market.domain.Product;
 import com.protalento.market.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,8 @@ public class ProductController {
         return productService.getAll(); //retorna todos los productos
     }
 
-    public Optional<Product> getProduct(int productId){
+    @GetMapping("/{id}")
+    public Optional<Product> getProduct(@PathVariable("id") int productId){
         return productService.getProduct(productId); //retorna producto por id
     }
 
