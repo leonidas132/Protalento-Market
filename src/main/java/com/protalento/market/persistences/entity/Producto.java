@@ -1,6 +1,5 @@
 package com.protalento.market.persistences.entity;
 
-import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,20 +7,19 @@ import java.util.List;
 /* @Entity le dara a entender a java que esta
 clase se comporta como una clase que mapea una entidad enc una base de datos */
 
-@Entity
-
 /*
 *@Table esta anotacion le dara entender a java que esta clase hace referencia a la tabla productos de
 * la base de datos
 *  */
+@Entity
 @Table(name = "productos")
 public class Producto {
-    private  int pri;
+
 
     @Id   // @Id  para especificar que es una clave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY) //para especificar que esta columna es la clave primaria y que es autoincrementable
     @Column(name = "id_producto") // @Column para definir el verdadero nombre de la columna en la base de datos en caso en que este se llame diferente
-    private Integer idProdcuto;
+    private Integer idProducto;
 
     private String nombre;
 
@@ -47,12 +45,12 @@ public class Producto {
     @OneToMany(mappedBy = "producto")
     private List<ComprasProductos> listar;
 
-    public Integer getIdProdcuto() {
-        return idProdcuto;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public void setIdProdcuto(Integer idProdcuto) {
-        this.idProdcuto = idProdcuto;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -101,5 +99,21 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public List<ComprasProductos> getListar() {
+        return listar;
+    }
+
+    public void setListar(List<ComprasProductos> listar) {
+        this.listar = listar;
     }
 }

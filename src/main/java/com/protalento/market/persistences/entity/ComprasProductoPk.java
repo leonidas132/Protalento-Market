@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Embeddable
 public class ComprasProductoPk implements Serializable {
-    private  int pri;
+
     @Column(name = "id_compra")
     private Integer idCompra;
 

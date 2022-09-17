@@ -8,6 +8,7 @@ public class ProtalentoMarketApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProtalentoMarketApplication.class, args);
+		System.out.println("ok");
 	}
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "clientes")
 public class Cliente {
-    private  int pri;
+
     @Id
     private String id;
 

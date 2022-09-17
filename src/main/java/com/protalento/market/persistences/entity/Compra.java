@@ -10,7 +10,7 @@ import java.util.List;
 @Entity // referencia a una tabal en la base de datos
 @Table(name = "compras") // referencia el nombre de la tabla
 public class Compra {
-    private  int pri;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compras")

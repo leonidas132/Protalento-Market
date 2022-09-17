@@ -7,7 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProductos {
-    private  int pri;
+
     @EmbeddedId
     private ComprasProductoPk id;
     private Integer cantidad;
