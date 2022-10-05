@@ -29,6 +29,10 @@ public class ProductController {
         return productService.getProduct(productId); //retorna producto por id
     }
 
+    @GetMapping("/{idP}/{idC}")
+    public Optional<Product>getPAncC(@PathVariable("idP")int idP ,@PathVariable("idC") int idC){
+        return productService.getIdProductAndIdC(idP,idC);
+    }
     public Optional<List<Product>>getByCategoria(int categoryId){
         return productService.getBYCategory(categoryId); //retorna producto por categoria
     }

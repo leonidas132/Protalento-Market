@@ -42,4 +42,9 @@ public class ProductService {
            return false;
        }
     }
+
+    public Optional<Product> getIdProductAndIdC(int idP, int idC){
+        return productRepository.getIdProductoAndIdCategoria(idP,idC);
+    }
+
 }

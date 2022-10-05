@@ -17,4 +17,7 @@ public interface ProductRepository {
     Product getSave(Product product);
     void getEliminar(int productId);
 
+    Optional<Product> getIdProductoAndIdCategoria(int diproducto,int idCategoria);
+
+
 }

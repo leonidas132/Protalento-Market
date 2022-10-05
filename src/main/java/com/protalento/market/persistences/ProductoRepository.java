@@ -56,4 +56,9 @@ public class ProductoRepository implements ProductRepository {
     public void getEliminar(int productId){
         productoCrudRepository.deleteById(productId);
     }
+
+    @Override
+    public Optional<Product> getIdProductoAndIdCategoria(int diproducto, int idCategoria) {
+        return productoCrudRepository.findByIdProductoAndAndIdCategoria(diproducto,idCategoria).map(producto -> mapper.toProduct(producto));
+    }
 }
