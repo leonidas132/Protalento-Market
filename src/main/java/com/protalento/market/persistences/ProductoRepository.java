@@ -2,6 +2,7 @@ package com.protalento.market.persistences;
 
 import com.protalento.market.domain.Product;
 import com.protalento.market.domain.repository.ProductRepository;
+import com.protalento.market.domain.service.ProductService;
 import com.protalento.market.persistences.crud.ProductoCrudRepository;
 import com.protalento.market.persistences.entity.Producto;
 import com.protalento.market.persistences.mapper.ProductMapper;
