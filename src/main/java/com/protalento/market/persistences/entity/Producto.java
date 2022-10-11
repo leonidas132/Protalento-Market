@@ -42,7 +42,7 @@ public class Producto {
     @JoinColumn(name = "id_categoria",insertable = false,updatable = false) //atrabes de esta anotacion espesificamos que atravez de esta relacion no vamos insertar ni a actualizar
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "compra", cascade={CascadeType.ALL})
     private List<ComprasProductos> listar;
 
     public Integer getIdProducto() {
