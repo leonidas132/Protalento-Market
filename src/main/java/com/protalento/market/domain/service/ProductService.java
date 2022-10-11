@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Service // es un servicio de nuestra logica de negosio
 public class ProductService {
+
     // se inyecta el productRepository
     @Autowired
     private ProductRepository productRepository;
@@ -42,4 +43,9 @@ public class ProductService {
            return false;
        }
     }
+
+    public Optional<Product> getIdProductAndIdC(int idP, int idC){
+        return productRepository.getIdProductoAndIdCategoria(idP,idC);
+    }
+
 }

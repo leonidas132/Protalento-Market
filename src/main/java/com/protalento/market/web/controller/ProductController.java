@@ -3,10 +3,11 @@ package com.protalento.market.web.controller;
 
 import com.protalento.market.domain.Product;
 import com.protalento.market.domain.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,24 +20,43 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/all")
-    public List<Product> getAll(){
-        return productService.getAll(); //retorna todos los productos
+    public ResponseEntity<List<Product>> getAll(){
+        return new ResponseEntity<>( productService.getAll(), HttpStatus.OK); //retorna todos los productos
     }
 
-    public Optional<Product> getProduct(int productId){
-        return productService.getProduct(productId); //retorna producto por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable("id") int productId){
+        return productService.getProduct(productId)
+                .map( product -> new ResponseEntity<>(product,HttpStatus.OK))
+                .orElse(new ResponseEntity(HttpStatus.NOT_FOUND)); //retorna producto por id
     }
 
-    public Optional<List<Product>>getByCategoria(int categoryId){
-        return productService.getBYCategory(categoryId); //retorna producto por categoria
+    @GetMapping("/{idP}/{idC}")
+    public ResponseEntity<Optional<Product>> getPAncC(@PathVariable("idP")int idP ,@PathVariable("idC") int idC){
+        return productService.getIdProductAndIdC(idP,idC)
+                .map(product -> new ResponseEntity<>(product,HttpStatus.OK))
+                .orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("/prodCat/{id}")
+    public ResponseEntity<List<Product>> getByCategoria(@PathVariable("id") int categoryId){
+        return productService.getBYCategory(categoryId)
+                .map(products -> new ResponseEntity<>(products,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND)); //retorna todos los productos que comparten la misma categoria
     }
 
-    public Product getSave(Product product){
-        return productService.getSave(product); //garda los produtos
+    @PostMapping("/guardar")
+    public ResponseEntity<Product> getSave(@RequestBody Product product){
+        return new ResponseEntity<>(productService.getSave(product),HttpStatus.CREATED) ; //garda los produtos
     }
 
-    public boolean getEliminar(int productId){
-        return productService.getEliminar(productId); //elimina los productos
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity getEliminar(@PathVariable("id") int productId){
+        if(productService.getEliminar(productId)){
+            return new ResponseEntity(HttpStatus.OK);
+        }else{
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
     }
 
 }

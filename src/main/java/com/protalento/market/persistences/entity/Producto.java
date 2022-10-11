@@ -17,7 +17,7 @@ public class Producto {
 
 
     @Id   // @Id  para especificar que es una clave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //para especificar que esta columna es la clave primaria y que es autoincrementable
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //para especificar que esta columna es la clave primaria y que es autoincrementable y adicional le dara identidad a los registros que esten en la tabla producto
     @Column(name = "id_producto") // @Column para definir el verdadero nombre de la columna en la base de datos en caso en que este se llame diferente
     private Integer idProducto;
 
@@ -42,7 +42,7 @@ public class Producto {
     @JoinColumn(name = "id_categoria",insertable = false,updatable = false) //atrabes de esta anotacion espesificamos que atravez de esta relacion no vamos insertar ni a actualizar
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "compra", cascade={CascadeType.ALL})
     private List<ComprasProductos> listar;
 
     public Integer getIdProducto() {

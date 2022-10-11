@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component //esta anotación simplemente registra un bean dentro del framework sin mayor efecto .
 @Mapper(componentModel ="spring", uses ={CategoryMapper.class})
 public interface ProductMapper {
 

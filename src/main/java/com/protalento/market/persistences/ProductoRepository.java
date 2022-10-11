@@ -2,6 +2,7 @@ package com.protalento.market.persistences;
 
 import com.protalento.market.domain.Product;
 import com.protalento.market.domain.repository.ProductRepository;
+import com.protalento.market.domain.service.ProductService;
 import com.protalento.market.persistences.crud.ProductoCrudRepository;
 import com.protalento.market.persistences.entity.Producto;
 import com.protalento.market.persistences.mapper.ProductMapper;
@@ -55,5 +56,10 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public void getEliminar(int productId){
         productoCrudRepository.deleteById(productId);
+    }
+
+    @Override
+    public Optional<Product> getIdProductoAndIdCategoria(int diproducto, int idCategoria) {
+        return productoCrudRepository.findByIdProductoAndAndIdCategoria(diproducto,idCategoria).map(producto -> mapper.toProduct(producto));
     }
 }
