@@ -41,4 +41,15 @@ public class CompraRerpository implements PurchaseRepository {
         compra.getListar().forEach(producto-> producto.setCompra(compra));
         return  Mapper.toPurchase(compraCrudRepository.save(compra));
     }
+
+    @Override
+    public Optional<Purchase> getPurchase(int idPurchase) {
+        return compraCrudRepository.findByIdCompra(idPurchase).map(compra -> Mapper.toPurchase(compra));
+    }
+
+
+    @Override
+    public boolean delete(int purchaseID) {
+        return compraCrudRepository.existsById(purchaseID);
+    }
 }

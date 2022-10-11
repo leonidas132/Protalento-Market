@@ -9,4 +9,6 @@ public interface PurchaseRepository {
     List<Purchase> getAll(); // obtiene todas las compras
     Optional<List<Purchase>> getByClient(String clientId); // retorna la lista de compra de un cliente
     Purchase save(Purchase purchase);
+    Optional<Purchase> getPurchase(int idPurchase);
+   boolean delete(int purchaseID);
 }

@@ -25,4 +25,13 @@ public class PurchaseService {
     public Purchase save( Purchase purchase){
         return purchaseRepository.save(purchase);
     }
+    public Optional<Purchase> getPurchas(int idP){
+        return purchaseRepository.getPurchase(idP);    }
+    public boolean getDelete (int id){
+        if(getPurchas(id).isPresent()){
+            return purchaseRepository.delete(id);
+        }else{
+            return false;
+        }
+    }
 }
