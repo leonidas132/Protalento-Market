@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository // CON ESTO LE ESTAMOS INDICANDO A SPRING QUE ESTA CLASE SE ENCARGA DE INTERECTUAR CON LA BASE DE DATOS
+@Repository // CON ESTO LE ESTAMOS INDICANDO A SPRING QUE ESTO ES UN COMPONENTE DE UN BEAN Y QUE ESTA CLASE SE ENCARGA DE INTERECTUAR CON LA BASE DE DATOS
 public class ProductoRepository implements ProductRepository {
     @Autowired // atravez de esta anotacio hacmemos la inyeccion de dependeia
     private ProductoCrudRepository productoCrudRepository;

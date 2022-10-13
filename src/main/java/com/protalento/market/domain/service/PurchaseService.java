@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service// es un servicio de nuestra logica de negosio
 public class PurchaseService {
     @Autowired
     private PurchaseRepository purchaseRepository;

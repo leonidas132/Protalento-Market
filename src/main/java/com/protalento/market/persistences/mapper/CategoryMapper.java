@@ -9,6 +9,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Mapper(componentModel = "spring",uses={ProductMapper.class})
 public interface CategoryMapper {
@@ -20,6 +22,8 @@ public interface CategoryMapper {
             @Mapping(source = "estado", target= "active")
     })
     Category toCategory(Categoria categoria);
+
+    List<Category> toCategories(List<Categoria> categorias);
 
     @InheritInverseConfiguration // le indica a map Struc que la converision que vamos a realizar es la inverza a la que hacemos arriba
     @Mapping(target ="producto", ignore =true) // de esta manera indicamos que ese atributo sera ignorado
