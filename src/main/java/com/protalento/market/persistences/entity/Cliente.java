@@ -23,6 +23,14 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Compra>listCompras;
 
+    public List<Compra> getListCompras() {
+        return listCompras;
+    }
+
+    public void setListCompras(List<Compra> listCompras) {
+        this.listCompras = listCompras;
+    }
+
     public String getId() {
         return id;
     }

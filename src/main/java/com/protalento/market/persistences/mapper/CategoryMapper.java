@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",uses={ProductMapper.class})
 public interface CategoryMapper {
 
     // de esta manera estamos convirtiendo categoria dentro de category
