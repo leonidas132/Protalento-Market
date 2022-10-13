@@ -39,7 +39,7 @@ public class ProductController {
     public ResponseEntity<Product> getProduct(@ApiParam(value ="Resibe un idProdcuto que sera de tipo int",required = true,example = "7") @PathVariable("id") int productId){
         return productService.getProduct(productId)
                 .map( product -> new ResponseEntity<>(product,HttpStatus.OK))
-                .orElse(new ResponseEntity(HttpStatus.NOT_FOUND)); //retorna producto por id
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND)); //retorna producto por id
     }
 
     @GetMapping("/{idP}/{idC}")
@@ -52,7 +52,7 @@ public class ProductController {
             ,@ApiParam(value = "Recibe un idCategoria de tipo int",required = true,example = "1")@PathVariable("idC") int idC){
         return productService.getIdProductAndIdC(idP,idC)
                 .map(product -> new ResponseEntity<>(product,HttpStatus.OK))
-                .orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 
