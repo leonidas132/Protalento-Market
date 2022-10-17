@@ -25,5 +25,19 @@ public class CategoryController {
     public ResponseEntity<Category> guardar(@RequestBody Category category){
         return new ResponseEntity<>(categoryService.getsave(category),HttpStatus.CREATED);
     }
-    
+    @GetMapping("/cunslCategoria/{id}")
+    public ResponseEntity<Category> getCategory(@PathVariable("id") int id){
+        return categoryService.getCategory(id)
+                .map(category -> new ResponseEntity<>(category,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity getEliminar(@PathVariable("id") int id){
+        if(categoryService.getEliminar(id)){
+            return new ResponseEntity(HttpStatus.OK);
+        }else{
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

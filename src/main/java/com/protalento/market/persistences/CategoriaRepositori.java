@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository// CON ESTO LE ESTAMOS INDICANDO A SPRING QUE ESTO ES UN COMPONENTE DE UN BEAN Y QUE ESTA CLASE SE ENCARGA DE INTERECTUAR CON LA BASE DE DATOS
 public class CategoriaRepositori implements CategoryRepository {
     @Autowired
@@ -27,5 +29,15 @@ public class CategoriaRepositori implements CategoryRepository {
     public Category getSave(Category category) {
         Categoria categoria = categoryMapper.toCategoria(category);
         return categoryMapper.toCategory(categoryCrudRepository.save(categoria));
+    }
+
+    @Override
+    public Optional<Category> getCategory(int id) {
+        return categoryCrudRepository.findByIdCategoria(id).map(categoria -> categoryMapper.toCategory(categoria));
+    }
+
+    @Override
+    public void getDelete(int idCategory) {
+        categoryCrudRepository.deleteById(idCategory);
     }
 }
