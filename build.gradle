@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.protalento'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 sourceCompatibility = '11'
 
 repositories {
@@ -13,6 +13,9 @@ repositories {
 }
 dependencies {
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+
+
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

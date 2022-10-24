@@ -8,8 +8,6 @@ import java.util.Optional;
 public interface CategoryRepository {
     List<Category> getAll();
     Category getSave(Category category);
-
     Optional<Category> getCategory(int id);
-
     void getDelete (int idCategory);
 }

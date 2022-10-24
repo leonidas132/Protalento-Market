@@ -1,6 +1,7 @@
 package com.protalento.market.domain.dto;
 
 public class AuthenticationResponse {
+    /*
     private String jwt;
 
     public AuthenticationResponse(String jwt) {
@@ -14,4 +15,6 @@ public class AuthenticationResponse {
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
+    */
+
 }
