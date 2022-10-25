@@ -9,7 +9,7 @@ import java.awt.font.OpenType;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service// es un servicio de nuestra logica de negosio
 public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
